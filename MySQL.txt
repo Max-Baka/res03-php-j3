@@ -1,3 +1,4 @@
+La liste de tous les utilisateurs ;
 SELECT * FROM users
 
 La liste de tous les utilisateurs rangée par noms de famille ;
@@ -6,7 +7,6 @@ SELECT * FROM users ORDER BY last_name
 Le dernier utilisateur inscrit ;
 SELECT * FROM users ORDER BY registration_date DESC
 
-
 La liste de tous les utilisateurs fêtant leur anniversaire ce mois-ci ;
 SELECT * FROM users WHERE MONTH(birthdate) = MONTH(CURRENT_DATE())
 
@@ -14,13 +14,13 @@ Le nombre total d'utilisateurs ;
 SELECT COUNT(*) FROM users
 
 La liste de tous les utilisateurs associés à leurs villes respectives ;
-
+SELECT users.*, addresses.city FROM users JOIN addresses ON users.address_id = addresses.id
 
 La liste de tous les utilisateurs vivant à une adresse sans numéro ;
-
+SELECT users.*, addresses.number FROM users JOIN addresses ON users.address_id = addresses.id WHERE addresses.number IS null
 
 La liste de tous les produits dont le prix est supérieur à 1 000 € ;
-
+SELECT * FROM products WHERE price > 1000
 
 La liste de tous les produits associés à leurs photos respectives ;
 
